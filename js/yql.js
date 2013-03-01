@@ -1,1 +1,4 @@
-alert("Hellow");
+function searchquery(squery)
+{
+	
+}
