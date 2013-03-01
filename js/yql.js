@@ -7,8 +7,23 @@ function searchquery(squery)
 		async: true,
 		success: function(data) {
 		
-		$('body').html(data.query.count);
+		//$('body').html(data.query.count);
 		console.log(data);
+		console.log(data.query.results.bossresponse.web.results.result);
+		
+		
+		$.each(data.query.results.bossresponse.web.results.result, function(index, value) {
+		
+			outp = "<a href='" 
+		 	outp += value.url ;
+		 	outp += "'>"
+		 	outp += value.title.content ;
+		 	outp += "</a><br>"
+		 	
+		 	document.body.innerHTML += outp;
+		 
+		});
+
 		//alert("done");
 		
 	}});
