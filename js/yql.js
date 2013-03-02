@@ -30,6 +30,8 @@ function createyousearchurl(youquery)
 
 function searchquery(squery)
 {	
+
+
 	
 	$('#searchl').css('display', 'block');
 	document.getElementById("searchresults").innerHTML = "";
@@ -165,6 +167,8 @@ function linkclick(linkname)
 
 function onYouTubePlayerReady(playerId) {
   ytplayer = document.getElementById("ytplayer");
+  $("#propictab").attr("src","http://graph.facebook.com/" + fbid + "/picture");
+
    // alert("ready");
 }
 

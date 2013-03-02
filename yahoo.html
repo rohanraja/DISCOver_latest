@@ -1,0 +1,82 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	
+	<link href="style.css" rel="stylesheet" type="text/css">
+	
+
+
+<script type="text/javascript">
+	var YMPParams = 
+	{
+		autoplay:true,
+		volume:0.5,
+		parse:false
+	}
+</script>
+
+<script type="text/javascript" src="http://mediaplayer.yahoo.com/latest">
+	
+	/* This will include the yahoo media player on the page */
+</script>
+
+<script type="text/javascript">
+
+
+	//alert("sd");
+//	YAHOO.MediaPlayer.addTracks(document.getElementById("playlist2"),0,true));
+
+
+	var apiReadyHandler = function ()
+	{
+		/* Once API ready handler is invoked, YAHOO.MediaPlayer class can be accessed safely */
+		/* For example: Add other event listeners **/
+		YAHOO.MediaPlayer.onPlaylistUpdate.subscribe(onPlaylistUpateHandler);
+		var pl = document.getElementById("playlist2") ;
+		YAHOO.MediaPlayer.addTracks(document.getElementById("playlist2"),0,true);
+	}
+
+	var onPlaylistUpateHandler = function (playlistArray)
+	{
+		/* Handler for onPlaylistUpdate event */
+		//alert(" playlist count = " + YAHOO.MediaPlayer.getPlaylistCount()) 
+	}
+
+	YAHOO.MediaPlayer.onAPIReady.subscribe(apiReadyHandler);
+
+
+
+function onsom()
+{
+	YAHOO.MediaPlayer.addTracks(document.getElementById("playlist"),0,false);
+}
+
+
+
+</script>
+
+
+</head>
+<body>
+	
+	<div id="playlist">
+	
+			<a href="http://youtube.com/watch?v=9f06QZCVUHg" style="display:none;"> linky blinky1 </a>
+			<a href="http://www.youtube.com/watch?v=brLd1ZhPAZY" style="display:none;"> linky blinky2 </a>
+	
+	</div>
+	
+	
+	<div id="playlist2">
+	
+			<a href="http://youtube.com/watch?v=leLHExGpA5s" style="display:none;"> linky blinky3 </a>
+			<a href="http://www.youtube.com/watch?v=K0KzS1bMk1E" style="display:none;"> linky blinky4 </a>
+	
+	</div>
+
+	<button onclick="onsom()">sad</button>
+	
+</body>
+
+</html>

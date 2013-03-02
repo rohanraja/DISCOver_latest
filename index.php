@@ -16,6 +16,8 @@
 	
 	 var fbid = <?php print $_GET['fbid'];?> ;
 	
+		
+
 	
 	</script>
 	
@@ -48,7 +50,7 @@
 
 			<a  id="fbcon" class="navbar-text pull-right" style=" "href="https://www.facebook.com/dialog/oauth?client_id=295811957186915&redirect_uri=http://collegepedia.in/videotuts/videocookie/fblogin.html&response_type=token" target="_blank">			
 			
-			<img src="img/fbcon.png" style="">
+			<img src="" style="" id="propictab">
 			</a>
 	
 	<img src="img/searchl.gif" id="searchl" style="display : none;">

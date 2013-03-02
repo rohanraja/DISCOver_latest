@@ -3,10 +3,26 @@
 	<meta charset="utf-8">
 	<title></title>
 	
+	<script type="text/javascript">
+		var YMPParams = 
+		{
+			autoplay:false,
+			volume:0.5,
+			defaultalbumart:'http://somedomain.com/path/someimage.gif',
+			parse:false
+		}
+	</script>
 	
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/swfobject.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/player-min.js"></script>
+
 	<script src="js/yql.js"></script>
+	
+	<script>	YAHOO.MediaPlayer.addTracks(document.getElementById("playlist"),1,false));
+</script>
+	
 	
 	
 	
@@ -49,7 +65,19 @@
 	</div>
 	
 	
+	<div id="playlist2">
 	
+			<a href="http://youtube.com/watch?v=leLHExGpA5s" style="display:none;"> linky blinky </a>
+			<a href="http://www.youtube.com/watch?v=K0KzS1bMk1E" style="display:none;"> linky blinky </a>
+	
+	</div>
+	
+	<div id="playlist">
+	
+			<a href="http://youtube.com/watch?v=9f06QZCVUHg" style="display:none;"> linky blinky </a>
+			<a href="http://www.youtube.com/watch?v=brLd1ZhPAZY" style="display:none;"> linky blinky </a>
+	
+	</div>
 	
 </body>
 </html>
