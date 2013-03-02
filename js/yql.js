@@ -1,8 +1,14 @@
+var fbid = 9;
+
+
 function createyousearchurl(youquery)
 {
 	//yousearchurl = "http://query.yahooapis.com/v1/yql?q=select%20*%20from%20boss.search%20where%20q%3D%22";
 	
 	//http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20boss.search%20where%20q%3D%22Summer%20of%2069%20Bryan%20Adams%22%20and%20secret%20%3D%20%22a3d93853ba3bad8a99a175e8ffa90a702cd08cfa%22%20and%20ck%3D%22dj0yJmk9YWF3ODdGNWZPYjg2JmQ9WVdrOWVsWlZNRk5KTldFbWNHbzlNVEEyTURFNU1qWXkmcz1jb25zdW1lcnNlY3JldCZ4PTUz%22%20AND%20sites%20%3D%20%22youtube.com%22%20AND%20count%20%3D%20%225%22%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=cbfunc
+	
+	
+	//http://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=_eVTXPUF4Oz4
 	
 	qry = youquery.replace("Lyrics","");
 	
@@ -72,14 +78,6 @@ function searchquery(squery)
 
 		 	outp += contt;
 		 	
-		 	var straa = contt.replace(/(.+)\ -\ /g, "");
-		 	songname = straa.replace(" Lyrics","");
-		 	
-		 	var artistname = contt.replace(/\ -(.+)/g, "");
-
-		 	
-		 	console.log(songname);
-		 	console.log(artistname);
 
 
 		 	outp += "')\">";
@@ -111,9 +109,34 @@ function searchquery(squery)
 }
 
 
+
+function updateplayhistory(sngname, sngartist, youid)
+{
+
+	
+	$.ajax({
+		url: "php/playhistupdate.php?fbid="+fbid+"&sname="+sngname+"&sartist="+sngartist+"&yid="+youid,
+		type: "GET",
+		async: true,
+		
+		success: function(data) {
+			
+			
+			console.log("Updated");
+			
+		}});
+	
+}
+
+
 function linkclick(linkname)
 {
 	$('#searchl').css('display', 'block');
+	
+	var straa = linkname.replace(/(.+)\ -\ /g, "");
+	songname = straa.replace(" Lyrics","");
+	
+	var artistname = linkname.replace(/\ -(.+)/g, "");
 
 	searchurl = createyousearchurl(linkname);
 	
@@ -132,6 +155,8 @@ function linkclick(linkname)
 			ytplayer = document.getElementById("ytplayer");
 			
 			ytplayer.loadVideoById(vidid, 0, "large");
+			
+			updateplayhistory(songname, artistname, vidid);
 			
 			
 			$('#searchl').css('display', 'none');
