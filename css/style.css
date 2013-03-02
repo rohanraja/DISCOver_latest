@@ -1,13 +1,18 @@
 #sbox
 {
 	font-size: 30px;
-	width: 100%;
+	width: 70%;
 }
 
 #searchresults h3
 {
 	border: 1px #000 solid;
-//	width: 400px;
+//	width: 70%;
 	padding: 1px;
 
+}
+
+#youplayer
+{
+	float: right;
 }

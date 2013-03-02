@@ -1,5 +1,29 @@
-function searchquery(squery)
+function createyousearchurl(youquery)
 {
+	yousearchurl = "http://query.yahooapis.com/v1/yql?q=select%20*%20from%20boss.search%20where%20q%3D%22";
+	
+	yousearchurl = yousearchurl + youquery ; 
+	
+	yousearchurl = yousearchurl + "%22%20and%20secret%20%3D%20%22a3d93853ba3bad8a99a175e8ffa90a702cd08cfa%22%20and%20ck%3D%22dj0yJmk9YWF3ODdGNWZPYjg2JmQ9WVdrOWVsWlZNRk5KTldFbWNHbzlNVEEyTURFNU1qWXkmcz1jb25zdW1lcnNlY3JldCZ4PTUz%22%20AND%20sites%20%3D%20%22youtube.com%22%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=cbfunc";
+		
+	yousearchurl = yousearchurl.replace(/\ /g,"%20");
+	yousearchurl = yousearchurl.replace("Lyrics","");
+	
+	console.log(yousearchurl);
+	
+	
+	return yousearchurl;
+	
+}
+
+
+function searchquery(squery)
+{	
+	
+	$('#searchl').css('display', 'block');
+	document.getElementById("searchresults").innerHTML = "";
+
+	
 	srchurl = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20boss.search%20where%20q%3D%22";
 	
 	srchurl = srchurl + squery;
@@ -9,6 +33,8 @@ function searchquery(squery)
 	
 	srchurl = srchurl.replace(/\ /g,"%20");
 	
+
+
 	console.log(srchurl);
 	
 	//alert(srchurl);
@@ -28,17 +54,55 @@ function searchquery(squery)
 		
 		$.each(data.query.results.bossresponse.web.results.result, function(index, value) {
 		
-			outp = "<a href='" 
-		 	outp += value.url ;
-		 	outp += "'>"
+			outp = "<div onclick=\"linkclick('" ;
+		 	contt = value.title.content.replace("<b>","") ;
+		 	contt = contt.replace("</b>","") ;
+		 	contt = contt.replace("'","\\'") ;
+
+		 	outp += contt;
+
+		 	outp += "')\">";
 		 	outp += value.title.content ;
-		 	outp += "</a><br>"
+		 	outp += "</div><br>";
 		 	
+		 	
+		 	$('#searchl').css('display', 'none');
+
 		 	document.getElementById("searchresults").innerHTML += outp;
+		 	
 		 
 		});
+		
+		//alert($('a').html());
 
 		//alert("done");
 		
 	}});
+}
+
+
+function linkclick(linkname)
+{
+	$('#searchl').css('display', 'block');
+
+	searchurl = createyousearchurl(linkname);
+	
+	$.ajax({
+		url: searchurl,
+		type: "GET",
+		dataType: 'json',
+		async: true,
+		success: function(data) {
+			
+			youtubeurl = data.query.results.bossresponse.web.results.result[0].url;
+			
+			console.log(youtubeurl);
+			
+			$("#youplayer").attr("src",youtubeurl);
+			
+			$('#searchl').css('display', 'none');
+
+		}});
+	
+	
 }
