@@ -4,6 +4,7 @@
 	<title></title>
 	
 	<script src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/swfobject.js"></script>
 	<script src="js/yql.js"></script>
 	
 	<link href="css/style.css" rel="stylesheet" type="text/css">
@@ -16,9 +17,32 @@
 
 	<iframe  class="player" type="text/html" width="300" height="300" data-youtubeid="" src="" frameborder="1" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" id="iframePlayer_view29"></iframe>
 	
+	
+<div id="ytplayer">
+
+<p>You will need Flash 8 or better to view this content.</p>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+	var params = { allowScriptAccess: "always" };
+
+	swfobject.embedSWF(
+
+		"http://www.youtube.com/v/tFI7JAybF6E&enablejsapi=1&playerapiid=ytplayer", "ytplayer", "425", "365", "8", null, null, params);
+
+</script>
+	
 	<img src="img/searchl.gif" id="searchl" style="display : none;">
 	<div id="searchresults" style="">
 	</div>
+	
+	
 	
 </body>
 </html>

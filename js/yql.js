@@ -104,6 +104,16 @@ function linkclick(linkname)
 			
 			youtubeurl = youtubeurl.replace("watch?v=","embed/");
 			
+			var vidid = youtubeurl.replace(/http:\/\/www.youtube.com\/embed\//, "");
+			
+			//alert(vidid);
+			
+			ytplayer = document.getElementById("ytplayer");
+			
+			ytplayer.loadVideoById(vidid, 5, "large");
+			
+
+			
 			$("#iframePlayer_view29").attr("src", "");
 			$("#iframePlayer_view29").attr("src",youtubeurl);
 			
@@ -112,4 +122,9 @@ function linkclick(linkname)
 		});
 	
 	
+}
+
+function onYouTubePlayerReady(playerId) {
+  ytplayer = document.getElementById("ytplayer");
+   // alert("ready");
 }
