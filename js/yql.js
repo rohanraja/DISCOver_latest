@@ -61,14 +61,15 @@ function searchquery(squery)
 		$.each(data.query.results.bossresponse.web.results.result, function(index, value) {
 		
 			outp = "<div onclick=\"linkclick('" ;
-		 	contt = value.title.content.replace("<b>","") ;
-		 	contt = contt.replace("</b>","") ;
-		 	contt = contt.replace("'","\\'") ;
+		 	contt = value.title.content.replace(/<b>/g,"") ;
+		 	contt1 = contt.replace(/<\/b>/g,"") ;
+		 	
+		 	contt = contt1.replace(/\'/g,"\\'") ;
 
 		 	outp += contt;
 
 		 	outp += "')\">";
-		 	outp += value.title.content ;
+		 	outp += contt1.replace("Lyrics",""); ;
 		 	outp += "</div><br>";
 		 	
 		 	
@@ -99,8 +100,10 @@ function linkclick(linkname)
 			
 			console.log(youtubeurl);
 			
-			$("#youplayer").attr("src", "");
-			$("#youplayer").attr("src",youtubeurl);
+			youtubeurl = youtubeurl.replace("watch?v=","embed/");
+			
+			$("#iframePlayer_view29").attr("src", "");
+			$("#iframePlayer_view29").attr("src",youtubeurl);
 			
 			$('#searchl').css('display', 'none');
 
