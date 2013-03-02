@@ -5,7 +5,7 @@ include "conn.php";
 $tbl="playupdates"; // Table name
 
 
-$fbid= 24;//$_GET['fbid']; 
+$fbid= $_GET['fbid']; 
 $song_name=$_GET['sname'];
 $song_artist=$_GET['sartist'];
 $you_url=$_GET['yid'];

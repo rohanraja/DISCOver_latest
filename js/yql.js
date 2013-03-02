@@ -1,6 +1,3 @@
-var fbid = 9;
-
-
 function createyousearchurl(youquery)
 {
 	//yousearchurl = "http://query.yahooapis.com/v1/yql?q=select%20*%20from%20boss.search%20where%20q%3D%22";
@@ -169,4 +166,13 @@ function linkclick(linkname)
 function onYouTubePlayerReady(playerId) {
   ytplayer = document.getElementById("ytplayer");
    // alert("ready");
+}
+
+
+function runScript(e) {
+	if (e.keyCode == 13) {
+		
+		searchquery($("#sbox").attr('value'));
+		return false;
+	}
 }

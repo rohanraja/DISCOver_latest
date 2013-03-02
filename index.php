@@ -12,6 +12,13 @@
 	
 	<link href="css/style.css" rel="stylesheet" type="text/css">
 	
+	<script type="text/javascript">
+	
+	 var fbid = <?php print $_GET['fbid'];?> ;
+	
+	
+	</script>
+	
 </head>
 <body>
 	
