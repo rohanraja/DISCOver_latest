@@ -12,7 +12,7 @@ function createyousearchurl(youquery)
 	
 	//yousearchurl = yousearchurl + "%22%20and%20secret%20%3D%20%22a3d93853ba3bad8a99a175e8ffa90a702cd08cfa%22%20and%20ck%3D%22dj0yJmk9YWF3ODdGNWZPYjg2JmQ9WVdrOWVsWlZNRk5KTldFbWNHbzlNVEEyTURFNU1qWXkmcz1jb25zdW1lcnNlY3JldCZ4PTUz%22%20AND%20sites%20%3D%20%22youtube.com%22%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=cbfunc";
 		
-	yousearchurl = yousearchurl + "%22%20and%20secret%20%3D%20%22a3d93853ba3bad8a99a175e8ffa90a702cd08cfa%22%20and%20ck%3D%22dj0yJmk9YWF3ODdGNWZPYjg2JmQ9WVdrOWVsWlZNRk5KTldFbWNHbzlNVEEyTURFNU1qWXkmcz1jb25zdW1lcnNlY3JldCZ4PTUz%22%20AND%20sites%20%3D%20%22youtube.com%22%20AND%20count%20%3D%20%225%22%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys" ;
+	yousearchurl = yousearchurl + "%22%20and%20secret%20%3D%20%22a3d93853ba3bad8a99a175e8ffa90a702cd08cfa%22%20and%20ck%3D%22dj0yJmk9YWF3ODdGNWZPYjg2JmQ9WVdrOWVsWlZNRk5KTldFbWNHbzlNVEEyTURFNU1qWXkmcz1jb25zdW1lcnNlY3JldCZ4PTUz%22%20AND%20sites%20%3D%20%22youtube.com%22%20AND%20count%20%3D%20%222%22%3B&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys" ;
 		
 	yousearchurl = yousearchurl.replace(/\ /g,"%20");
 	//yousearchurl = yousearchurl.replace("Lyrics","");
@@ -60,7 +60,9 @@ function searchquery(squery)
 		
 		document.getElementById("searchresults").innerHTML = "";
 		
-		$.each(data.query.results.bossresponse.web.results.result, function(index, value) {
+		resultarray = data.query.results.bossresponse.web.results.result ;
+		
+		$.each(resultarray, function(index, value) {
 		
 			outp = "<div onclick=\"linkclick('" ;
 		 	contt = value.title.content.replace(/<b>/g,"") ;
@@ -69,18 +71,37 @@ function searchquery(squery)
 		 	contt = contt1.replace(/\'/g,"\\'") ;
 
 		 	outp += contt;
+		 	
+		 	var straa = contt.replace(/(.+)\ -\ /g, "");
+		 	songname = straa.replace(" Lyrics","");
+		 	
+		 	var artistname = contt.replace(/\ -(.+)/g, "");
+
+		 	
+		 	console.log(songname);
+		 	console.log(artistname);
+
 
 		 	outp += "')\">";
-		 	outp += contt1.replace("Lyrics",""); ;
+		 	outp += contt1.replace("Lyrics",""); 
 		 	outp += "</div><br>";
 		 	
 		 	
-		 	$('#searchl').css('display', 'none');
+		 	
 
 		 	document.getElementById("searchresults").innerHTML += outp;
 		 	
 		 
 		});
+		
+		
+		
+		contt = resultarray[0].title.content.replace(/<b>/g,"") ;
+		contt1 = contt.replace(/<\/b>/g,"") ;
+		contt = contt1.replace(/\'/g,"\\'") ;
+		linkclick(contt);
+		
+		
 		
 		//alert($('a').html());
 
@@ -110,12 +131,8 @@ function linkclick(linkname)
 			
 			ytplayer = document.getElementById("ytplayer");
 			
-			ytplayer.loadVideoById(vidid, 5, "large");
+			ytplayer.loadVideoById(vidid, 0, "large");
 			
-
-			
-			$("#iframePlayer_view29").attr("src", "");
-			$("#iframePlayer_view29").attr("src",youtubeurl);
 			
 			$('#searchl').css('display', 'none');
 

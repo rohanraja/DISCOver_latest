@@ -4,6 +4,8 @@
 	width: 70%;
 }
 
+
+
 #searchresults h3
 {
 	border: 1px #000 solid;
@@ -12,7 +14,7 @@
 
 }
 
-#iframePlayer_view29
+#ytplayer
 {
 	float: right;
 }
