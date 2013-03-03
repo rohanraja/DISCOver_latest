@@ -228,19 +228,24 @@ function load_suggestions(vidid)
 		mainout = "";
 		
 		$.each(data, function(index, value) {
+		 
 			
 			
-			
-			$.get("php/getsong.php?yid="+value.you_url, function(dataa) {
+			$.ajax({
+				url: "php/getsong.php?yid="+value.you_url,
+				type: "GET",
+				dataType: 'html',
+				async: false,
+				success: function(dataa) {
 
 
 
 			outt = '<div id="items"><div id="videoimg"><img src="http://img.youtube.com/vi/' + value.you_url + '/2.jpg"></div><div id="videodet">' + dataa + '</div></div>';
 			
-		mainout = mainout + outt;
+			mainout = mainout + outt;
 			
 			
-			});
+			}});
 			
 		});
 		
