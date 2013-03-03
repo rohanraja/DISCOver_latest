@@ -273,6 +273,9 @@ function runScript(e) {
 
 function load_suggestions(vidid)
 {
+	
+	$('.ywp-container .ywp-btn-expand-collapse-player').css('height','0px');
+	
 	if($("#suggestions").html())
 		$("#suggestions").animate({bottom : '-500px'}, 1500);
 
@@ -318,6 +321,9 @@ function load_suggestions(vidid)
 
 
 });
+
+
+
 	
 }
 
