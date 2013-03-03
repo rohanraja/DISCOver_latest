@@ -230,7 +230,7 @@ function linkclick(linkname)
 
 			$('div.ywp-container').animate({'margin-left' : '320px'}, 'slow');
 			
-				}, 5800); 
+				}, 9800); 
 						
 			
 			$('#searchl').css('display', 'none');
