@@ -1,3 +1,5 @@
+var fbid = iddd; 
+
 function createyousearchurl(youquery)
 {
 	//yousearchurl = "http://query.yahooapis.com/v1/yql?q=select%20*%20from%20boss.search%20where%20q%3D%22";
@@ -69,34 +71,52 @@ function searchquery(squery)
 		
 		$.each(resultarray, function(index, value) {
 		
-			outp = "<div onclick=\"linkclick('" ;
+			outp = "<div class=\"searchitems\" onclick=\"linkclick('" ;
 		 	contt = value.title.content.replace(/<b>/g,"") ;
 		 	contt1 = contt.replace(/<\/b>/g,"") ;
 		 	
 		 	contt = contt1.replace(/\'/g,"\\'") ;
 
 		 	outp += contt;
-		 	
+		 				
+			
+			
+			searchurl = createyousearchurl(contt);
+			
+			$.getJSON(searchurl, function(data) {
+				
+				youtubeurl = data.query.results.bossresponse.web.results.result[0].url;
+				console.log(youtubeurl);
+				youtubeurl = youtubeurl.replace("watch?v=","embed/");
+			
+				vidid2 = youtubeurl.replace(/http:\/\/www.youtube.com\/embed\//, "");
 
+				$("#"+index.toString()).find('img').attr('src','http://img.youtube.com/vi/'+vidid2+'/2.jpg');
+				
+			});
 
-		 	outp += "')\">";
+		 	outp += "')\" id='"+ index +"'>";
 		 	outp += contt1.replace("Lyrics",""); 
-		 	outp += "</div><br>";
+		 	//outp += "<img src='http://img.youtube.com/vi/" + vidid +"/2.jpg";
+		 	
+		 	outp += "<img src=''></div><br>";
 		 	
 		 	
 		 	
 
 		 	document.getElementById("searchresults").innerHTML += outp;
 		 	
+		 	if(index==0)
+		 	{
+			 	linkclick(contt);
+		 	}
+		 	
+		 	
+		 
 		 
 		});
 		
-		
-		
-		contt = resultarray[0].title.content.replace(/<b>/g,"") ;
-		contt1 = contt.replace(/<\/b>/g,"") ;
-		contt = contt1.replace(/\'/g,"\\'") ;
-		linkclick(contt);
+	
 		
 		
 		
@@ -145,17 +165,27 @@ function linkclick(linkname)
 			
 			console.log(youtubeurl);
 			
+			yahooyouurl = youtubeurl;
+			
 			youtubeurl = youtubeurl.replace("watch?v=","embed/");
 			
 			var vidid = youtubeurl.replace(/http:\/\/www.youtube.com\/embed\//, "");
 			
 			//alert(vidid);
 			
-			ytplayer = document.getElementById("ytplayer");
 			
-			ytplayer.loadVideoById(vidid, 0, "large");
+			var pl = document.getElementById("playlist") ;
+			
+			pl.innerHTML = "";
+			
+			pl.innerHTML = "<a href='" + yahooyouurl + "'>"+songname+"</a>" ;
+			
+			YAHOO.MediaPlayer.addTracks(pl,null,false);
+			YAHOO.MediaPlayer.next();
 			
 			updateplayhistory(songname, artistname, vidid);
+			
+			load_suggestions(vidid);
 			
 			
 			$('#searchl').css('display', 'none');
@@ -165,12 +195,19 @@ function linkclick(linkname)
 	
 }
 
-function onYouTubePlayerReady(playerId) {
-  ytplayer = document.getElementById("ytplayer");
-  $("#propictab").attr("src","http://graph.facebook.com/" + fbid + "/picture");
-
-   // alert("ready");
+function getyoutubeurlfromsearch(srchq)
+{
+	searchurl = createyousearchurl(srchq);
+	
+	$.getJSON(searchurl, function(data) {
+		
+		youtubeurl = data.query.results.bossresponse.web.results.result[0].url;
+		return youtubeurl;
+		
+	});
 }
+
+
 
 
 function runScript(e) {
@@ -179,4 +216,39 @@ function runScript(e) {
 		searchquery($("#sbox").attr('value'));
 		return false;
 	}
+}
+
+
+
+function load_suggestions(vidid)
+{
+	
+	$.getJSON("php/generatesuggestions.php?yid="+vidid+"&fbid="+fbid, function(data) {
+		
+		mainout = "";
+		
+		$.each(data, function(index, value) {
+			
+			
+			
+			$.get("php/getsong.php?yid="+value.you_url, function(dataa) {
+
+
+
+			outt = '<div id="items"><div id="videoimg"><img src="http://img.youtube.com/vi/' + value.you_url + '/2.jpg"></div><div id="videodet">' + dataa + '</div></div>';
+			
+		mainout = mainout + outt;
+			
+			
+			});
+			
+		});
+		
+		
+		
+		$("#suggestions").html(mainout);
+
+
+});
+	
 }

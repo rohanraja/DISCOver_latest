@@ -40,6 +40,9 @@ $result = mysql_query($mainquery);
 
 $pgs = array();
 while($r = mysql_fetch_assoc($result)) {
+	
+	 
+	
 	$pgs[] = $r;
 
 }

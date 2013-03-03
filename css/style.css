@@ -1,15 +1,100 @@
+@font-face { font-family: BebasNeue; src: url('BebasNeue.otf'); } 
+body {
+margin: 0px;
+color: white;
+background: black url(../img/Concert2.jpg) no-repeat top center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+font-family: BebasNeue, verdana, helvetica, sans-serif;
+text-shadow: 1px 1px 12px #111;
+filter: dropshadow(color=#111, offx=1, offy=1);
+height:100%;
+}
+#main{width:1200px;
+margin:0 auto;}
+div.ywp-container { position:absolute; right:0px;margin-left: 705px;  margin-bottom: 190px;
+-webkit-box-shadow:none;
+box-shadow: none;
+}
+div.ywp-player{
+-webkit-box-shadow:none;
+box-shadow: none;
+}
 #sbox
-{
+{    box-shadow:0px 0px 20px 5px #98881f;
 	font-size: 30px;
 	width: 70%;
+	background:#868686;
+	border:0px;
+	opacity:0.6;
+	font-family:roboto;
+	padding-left:20px;
+	margin-bottom:30px;
 }
 
+#searchresults{
+padding-top:10px;
+width:50%;
+float:left;
+z-index:10000;
+-webkit-transform: none;
+-webkit-transition: all 300ms ease 0ms;
+}
+.searchitems{cursor:pointer;
+clear:both;
+overflow:hidden;
+font-weight:bold;}
+.searchitems img {float:left; padding-right:20px;height:54px; weight:72px;}
+#suggestions{
+clear:both;
+color:white;
+font-size:30px;
+position:absolute;
+bottom:5px;
+width:1180px;
+background:white;
+border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding-left:20px;
+	opacity:0.6;
+	 box-shadow:0px 0px 40px 5px white;
+/*background:url(../img/index.png) repeat-x,url(../img/index.png) repeat-x bottom;*/
 
+}
+#items{
+min-width: 150px;
+float: left;
 
+margin-bottom:10px;
+margin-top:10px;
+
+text-align: center;
+color:black;
+}
+#videoimg
+{
+	padding:14px 0;
+	float: left;
+	padding-left:10px;
+}
+#videoimg img
+{
+	height:66px;
+	width:88px;
+}
+#videodet
+{
+	float: left;
+	padding: 4px;
+	font-size:14px;
+	padding-top:24px;
+	font-weight:bold;
+}
 #searchresults h3
 {
 	border: 1px #000 solid;
-//	width: 70%;
+	width: 70%;
 	padding: 1px;
 
 }

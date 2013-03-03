@@ -60,7 +60,7 @@ function getfromfb()
 
 
 
-			onlogin(mee.name, mee.id);
+			onlogin(mee.first_name, mee.id);
 
 
 
@@ -85,8 +85,11 @@ function onlogin(name, fbid)
 {
 
 
-	window.location.href = "index.php?fbid="+fbid;
+	console.log("FB LOADED");
 
+	$("#propictab").attr("src","http://graph.facebook.com/" + fbid + "/picture");
+
+	$("#proname").html("Hi "+name+"!");
 
 
 
