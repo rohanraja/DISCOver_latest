@@ -223,6 +223,14 @@ function linkclick(linkname)
 			updateplayhistory(songname, artistname, vidid);
 			
 			setTimeout(function() { load_suggestions(vidid) ; }, 2800); 
+
+			setTimeout(function() { 
+			
+			$("#searchresults").animate({height : '0px'}, 'fast');
+
+			$('div.ywp-container').animate({'margin-left' : '320px'}, 'slow');
+			
+				}, 5800); 
 						
 			
 			$('#searchl').css('display', 'none');
@@ -230,6 +238,8 @@ function linkclick(linkname)
 			//console.log($('div.ywp-player').css('box-shadow', 'none'));
 			
 			$("#searchresults").animate({height : '400px'}, 'slow');
+			$('div.ywp-container').animate({'margin-left' : '650px'}, 'slow');
+			
 
 		});
 	
