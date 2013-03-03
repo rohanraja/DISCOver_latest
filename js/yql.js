@@ -229,7 +229,8 @@ function load_suggestions(vidid)
 		
 		$.each(data, function(index, value) {
 		 
-			
+			if(value.you_url != vidid)
+			{
 			
 			$.ajax({
 				url: "php/getsong.php?yid="+value.you_url,
@@ -247,11 +248,15 @@ function load_suggestions(vidid)
 			
 			}});
 			
+			}
+			
 		});
 		
 		
 		
 		$("#suggestions").html(mainout);
+		
+		
 
 
 });

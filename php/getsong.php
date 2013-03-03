@@ -15,6 +15,6 @@ $row = mysql_fetch_array($result);
 $sname = $row['song_name'];
 $aname = $row['song_artist'];
 
-print $sname."<br>Artist: ".$aname ;
+print $sname."<br>by ".$aname ;
 
 ?>
