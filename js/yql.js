@@ -222,8 +222,8 @@ function linkclick(linkname)
 			
 			updateplayhistory(songname, artistname, vidid);
 			
-			load_suggestions(vidid);
-			
+			setTimeout(function() { load_suggestions(vidid) ; }, 2000); 
+						
 			
 			$('#searchl').css('display', 'none');
 			
@@ -263,6 +263,9 @@ function runScript(e) {
 
 function load_suggestions(vidid)
 {
+	if($("#suggestions").html())
+		$("#suggestions").animate({bottom : '-500px'}, 'slow');
+
 	
 	$.getJSON("php/generatesuggestions.php?yid="+vidid+"&fbid="+fbid, function(data) {
 		
@@ -295,7 +298,11 @@ function load_suggestions(vidid)
 		
 		
 		
-		$("#suggestions").html(mainout);
+		$("#suggestions").html("<div id=\"people\">People who like this music also like</div>"+mainout);
+		
+		if(mainout)
+			$("#suggestions").animate({bottom : '5px'}, 'slow');
+
 		
 		
 

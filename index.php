@@ -73,7 +73,10 @@
 	<img src="img/searchl.gif" id="searchl" style="display : none;">
 	<div id="searchresults" style=""></div>
 	
-	<div id="suggestions"></div>
+
+	<div id="suggestions">
+
+	</div>
 		
 	<div id="playlist" style="visibility : hidden">
 
