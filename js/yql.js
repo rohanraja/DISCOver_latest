@@ -33,10 +33,11 @@ function createyousearchurl(youquery)
 function searchquery(squery)
 {	
 
+	$("#searchresults").animate({height : '0px'}, 'slow');
 
 	
 	$('#searchl').css('display', 'block');
-	document.getElementById("searchresults").innerHTML = "";
+	
 
 	
 	srchurl = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20boss.search%20where%20q%3D%22";
