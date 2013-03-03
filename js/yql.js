@@ -222,7 +222,7 @@ function linkclick(linkname)
 			
 			updateplayhistory(songname, artistname, vidid);
 			
-			setTimeout(function() { load_suggestions(vidid) ; }, 2000); 
+			setTimeout(function() { load_suggestions(vidid) ; }, 2800); 
 						
 			
 			$('#searchl').css('display', 'none');
@@ -264,7 +264,7 @@ function runScript(e) {
 function load_suggestions(vidid)
 {
 	if($("#suggestions").html())
-		$("#suggestions").animate({bottom : '-500px'}, 'slow');
+		$("#suggestions").animate({bottom : '-500px'}, 1500);
 
 	
 	$.getJSON("php/generatesuggestions.php?yid="+vidid+"&fbid="+fbid, function(data) {
@@ -285,7 +285,7 @@ function load_suggestions(vidid)
 
 
 
-			outt = '<div id="items"><div id="videoimg"><img src="http://img.youtube.com/vi/' + value.you_url + '/2.jpg"></div><div id="videodet">' + dataa + '</div></div>';
+			outt = '<div id="items" onclick="linkclick(\''+dataa+'\')"><div id="videoimg"><img src="http://img.youtube.com/vi/' + value.you_url + '/2.jpg"></div><div id="videodet">' + dataa + '</div></div>';
 			
 			mainout = mainout + outt;
 			
@@ -301,7 +301,7 @@ function load_suggestions(vidid)
 		$("#suggestions").html("<div id=\"people\">People who like this music also like</div>"+mainout);
 		
 		if(mainout)
-			$("#suggestions").animate({bottom : '5px'}, 'slow');
+			$("#suggestions").animate({bottom : '5px'}, 1500);
 
 		
 		
@@ -310,3 +310,4 @@ function load_suggestions(vidid)
 });
 	
 }
+
