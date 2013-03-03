@@ -189,6 +189,10 @@ function linkclick(linkname)
 			
 			
 			$('#searchl').css('display', 'none');
+			
+			console.log($('div.ywp-player').css('box-shadow', 'none'));
+			
+			$("#searchresults").animate({height : '400px'}, 'slow');
 
 		});
 	

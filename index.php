@@ -70,35 +70,9 @@
 			<b id="proname"></b>
 	
 	<img src="img/searchl.gif" id="searchl" style="display : none;">
-	<div id="searchresults" style="">
-	</div>
-	<div id="suggestions">
-	<div id="items">
-	<div id="videoimg"><img src="http://i3.ytimg.com/vi/2iUZRSeqzz8/default.jpg"/></div>
-	<div id="videodet">Fade to black<br/>Artist: Metallica</div>
-	</div>
-	<div id="items">
-	<div id="videoimg"><img src="http://i4.ytimg.com/vi/SzsDHtzx6tI/default.jpg"/></div>
-	<div id="videodet">Fade to black<br/>Artist: Metallica</div>
-	</div>
-	<div id="items">
-	<div id="videoimg"><img src="http://i3.ytimg.com/vi/FoY1uGj3DQk/default.jpg"/></div>
-	<div id="videodet">Fade to black<br/>Artist: Metallica</div>
-	</div>
-	<div id="items">
-	<div id="videoimg"><img src="http://i3.ytimg.com/vi/2iUZRSeqzz8/default.jpg"/></div>
-	<div id="videodet">Fade to black<br/>Artist: Metallica</div>
-	</div>
-	<div id="items">
-	<div id="videoimg"><img src="http://i3.ytimg.com/vi/2iUZRSeqzz8/default.jpg"/></div>
-	<div id="videodet">Fade to black<br/>Artist: Metallica</div>
-	</div>
-	</div>
-	
+		
 	<div id="playlist" style="visibility : hidden">
-	
-			<a href="http://youtube.com/watch?v=9f06QZCVUHg" style="display:none;"> linky blinky1 </a>
-			<a href="http://www.youtube.com/watch?v=brLd1ZhPAZY" style="display:none;"> linky blinky2 </a>
+
 	
 	</div>
 </div>	
