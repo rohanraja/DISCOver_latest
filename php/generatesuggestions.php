@@ -34,7 +34,7 @@ while ($row = mysql_fetch_array($result) )
 }
 
 
-$mainquery = "SELECT you_url, COUNT(fbid) FROM ($finalsearchq) AS temp GROUP BY you_url ORDER BY COUNT(fbid) DESC LIMIT 5";
+$mainquery = "SELECT you_url, COUNT(fbid) FROM ($finalsearchq) AS temp GROUP BY you_url ORDER BY COUNT(fbid) DESC LIMIT 4";
 
 $result = mysql_query($mainquery);
 

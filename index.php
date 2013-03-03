@@ -7,6 +7,7 @@
 	<script src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/swfobject.js"></script>
 	
+	
 	<script type="text/javascript">
 		var YMPParams = 
 		{
@@ -70,6 +71,9 @@
 			<b id="proname"></b>
 	
 	<img src="img/searchl.gif" id="searchl" style="display : none;">
+	<div id="searchresults" style=""></div>
+	
+	<div id="suggestions"></div>
 		
 	<div id="playlist" style="visibility : hidden">
 
